@@ -29,7 +29,8 @@ class RegistrationView(APIView):
 
     def post(self, request: Request):
         data = request.POST.copy()
-        data['username'] = data['email']
+        username = data.get('email', None)
+        data['username'] = username
 
         user_serializer = RegisterSerializer(data=data)
         user_serializer.is_valid(raise_exception=True)

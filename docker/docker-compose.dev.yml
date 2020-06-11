@@ -20,6 +20,7 @@ services:
       - $DJANGO_PORT:8000
     volumes:
       - ../website:/var/www/project/website
+      - ../periodic:/var/www/project/periodic
       - ./log/django:/var/log/python
     depends_on:
       - postgres

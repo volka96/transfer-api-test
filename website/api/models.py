@@ -11,13 +11,6 @@ class Currency(models.Model):
     name = models.CharField(_('Currency short name'), max_length=3)
 
 
-class Wallet(TrackableUpdateCreateModel):
-    user = models.OneToOneField(User, verbose_name=_('User'), related_name='wallet',
-                                on_delete=models.CASCADE, db_index=True)
-    currency = models.ForeignKey(Currency, verbose_name=_('Currency'), on_delete=models.SET_NULL, null=True)
-    balance = models.FloatField(_('Balance'), default=0.0)
-
-
 class Transfer(TrackableUpdateCreateModel):
     user_from = models.ForeignKey(User,
                                   verbose_name=_('User from'),
@@ -36,3 +29,10 @@ class Transfer(TrackableUpdateCreateModel):
 
     amount = models.PositiveIntegerField(_('Balance'), null=True, blank=False)
     currency = models.ForeignKey(Currency, verbose_name=_('Currency'), on_delete=models.SET_NULL, null=True)
+
+
+class Wallet(TrackableUpdateCreateModel):
+    user = models.OneToOneField(User, verbose_name=_('User'), related_name='wallet',
+                                on_delete=models.CASCADE, db_index=True)
+    currency = models.ForeignKey(Currency, verbose_name=_('Currency'), on_delete=models.SET_NULL, null=True)
+    balance = models.FloatField(_('Balance'), default=0.0)
