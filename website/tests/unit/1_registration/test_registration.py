@@ -18,7 +18,7 @@ def test_registrationView_validEmail_successResponse():
         "currency": "usd",
         "balance": 100,
     }
-    register_url = 'http://http://0.0.0.0:8000/api/register/'
+    register_url = 'http://0.0.0.0:8000/api/register/'
 
     request = RequestFactory().post(register_url, data)
     response = registration_view(request)

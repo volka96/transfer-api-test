@@ -29,7 +29,7 @@ login_view = LoginView.as_view()
 #         "balance": 100,
 #     }
 #
-#     register_url = 'http://http://0.0.0.0:8000/api/register/'
+#     register_url = 'http://0.0.0.0:8000/api/register/'
 #
 #     request = RequestFactory().post(register_url, register_data_1)
 #     response = registration_view(request)
@@ -37,7 +37,7 @@ login_view = LoginView.as_view()
 #     request = RequestFactory().post(register_url, register_data_2)
 #     response = registration_view(request)
 #
-#     login_url = 'http://http://0.0.0.0:8000/api/login/'
+#     login_url = 'http://0.0.0.0:8000/api/login/'
 #
 #     request = RequestFactory().post(login_url, register_data_1)
 #     response = login_view(request)
@@ -49,7 +49,7 @@ login_view = LoginView.as_view()
 #         "amount": 50,
 #     }
 #
-#     transfer_url = 'http://http://0.0.0.0:8000/api/transfer/'
+#     transfer_url = 'http://0.0.0.0:8000/api/transfer/'
 #     headers = {"Authorization": "Bearer {0}".format(token)}
 #
 #     request = RequestFactory().post(transfer_url, data, headers)
