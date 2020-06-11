@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Currency(models.Model):
-    usd_ratio = models.PositiveIntegerField(_('USD ratio'), default=1)
+    usd_ratio = models.FloatField(_('USD ratio'), default=1)
     name = models.CharField(_('Currency short name'), max_length=3)
 
 
@@ -15,7 +15,7 @@ class Wallet(TrackableUpdateCreateModel):
     user = models.OneToOneField(User, verbose_name=_('User'), related_name='wallet',
                                 on_delete=models.CASCADE, db_index=True)
     currency = models.ForeignKey(Currency, verbose_name=_('Currency'), on_delete=models.SET_NULL, null=True)
-    balance = models.PositiveIntegerField(_('Balance'), default=0)
+    balance = models.FloatField(_('Balance'), default=0.0)
 
 
 class Transfer(TrackableUpdateCreateModel):
