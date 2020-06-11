@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  postgres:
+    build:
+      context: postgres
+    ports:
+      - $POSTGRES_PORT:5432
+    volumes:
+      - ./postgres_data:$PGDATA
+      - ./log/postgres:/var/log/postgresql
+    environment:
+      - PGDATA=$PGDATA/data
+    env_file:
+      - postgres/.env
+  django:
+    build:
+      context: django
+    ports:
+      - $DJANGO_PORT:8000
+    volumes:
+      - ../website:/var/www/project/website
+      - ./log/django:/var/log/python
+    depends_on:
+      - postgres
+    environment:
+      - DEBUG=true
+    env_file:
+      - postgres/.env
+      - django/.env
+    tty: true
+    stdin_open: true
